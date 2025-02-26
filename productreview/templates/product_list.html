@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .product { border: 1px solid #ddd; padding: 15px; margin: 10px; display: inline-block; width: 300px; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+    <h1>Available Products</h1>
+
+    {% for product in products %}
+        <div class="product">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }} style=">
+            {% endif %}
+            {% if product.link %}
+                <p><a href="{{ product.link }}" target='_blank'>View Product</a></p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No products available.</p>
+    {% endfor %}
+
+</body>
+</html>
